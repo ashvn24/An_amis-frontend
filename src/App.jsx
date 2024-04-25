@@ -7,7 +7,6 @@ import CoreLayout from './User/Core/CoreLayout';
 import Index from './User/Core/Index';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
    <> 

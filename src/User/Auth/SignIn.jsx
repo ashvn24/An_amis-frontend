@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BASEURL } from '../../Axios/BaseUrl'
 import { axiosInstance } from '../../Axios/AxiosInstance'
 
@@ -10,6 +10,7 @@ const SignIn = () => {
     email:"",
     password:""
   })
+  const navigate = useNavigate()
 
   const handleChange = (e) =>{
     const { name, value } = e.target
@@ -31,6 +32,7 @@ const SignIn = () => {
         console.log(res.data)
         localStorage.setItem('access', res.data.accessToken);
         localStorage.setItem('refresh', res.data.refreshToken);
+        navigate('/index')
       })
     }
 
