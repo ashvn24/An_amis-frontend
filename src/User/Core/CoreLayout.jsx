@@ -1,9 +1,27 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const CoreLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
   const accessToken = localStorage.getItem("access");
+
+
+  const handleServiceClick = () => {
+    // Scroll to the Service section
+    const serviceSection = document.getElementById('service-section');
+    if (serviceSection) {
+      serviceSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
+  const handleAbout =() => {
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+  }
+
   return (
     <div>
       <div className="h-8 z-10 relative bg-blue-100 text-blue-900 text-xs text-center tracking-wider flex items-center justify-center px-6">
@@ -32,15 +50,15 @@ const CoreLayout = () => {
               />
             </svg>
           </button>
-          <div className="hidden md:flex items-center justify-center">
-            <a href="/about" className="mx-6">
+          <div className="hidden md:flex items-center justify-center cursor-pointer">
+            <a className="mx-6" onClick={handleAbout}>
               About
             </a>
-            <a href="/products" className="mx-6">
+            <a  className="mx-6" onClick={handleServiceClick}>
               Service
             </a>
-            <a href="/blog" className="mx-6">
-              Articles
+            <a className="mx-6">
+              Contact us
             </a>
           </div>
         </div>
@@ -81,7 +99,7 @@ const CoreLayout = () => {
             )}
         </div>
         {showMenu && (
-          <div className="fixed inset-0 w-screen h-screen md:hidden flex flex-col items-center justify-center text-2xl space-y-4 bg-blue-100 text-white z-40">
+          <div className="fixed inset-0 w-screen h-screen md:hidden flex flex-col items-center justify-center text-2xl space-y-4 bg-blue-400 text-white z-40">
             <button
               onClick={() => setShowMenu(false)}
               className="absolute top-0 right-0 mt-12 mr-12 text-white"
@@ -101,13 +119,17 @@ const CoreLayout = () => {
                 />
               </svg>
             </button>
-            <a href="/about" className="mx-6">
+            <a  className="mx-6" onClick={()=>{
+              handleAbout() 
+              setShowMenu(false)}}>
               About
             </a>
-            <a href="/products" className="mx-6">
+            <a className="mx-6" onClick={()=>{
+              handleServiceClick()
+            setShowMenu(false)}}>
               Service
             </a>
-            <a href="/blog" className="mx-6">
+            <a className="mx-6">
               Articles
             </a>
           </div>

@@ -6,6 +6,7 @@ import { axiosInstance } from '../../Axios/AxiosInstance'
 
 const SignIn = () => {
 
+  const [load, setLoad] = useState(false)
   const [formData, setFormData] = useState({
     email:"",
     password:""
@@ -25,15 +26,22 @@ const SignIn = () => {
     var data = new FormData()
     const isValid = Object.values(formData).every(value=>value!=='');
     if (isValid){
-
-      data.append('email', formData.email);
-      data.append('password', formData.password);
-      axiosInstance.post('/user/log/', data).then((res)=>{
-        console.log(res.data)
-        localStorage.setItem('access', res.data.accessToken);
-        localStorage.setItem('refresh', res.data.refreshToken);
-        navigate('/index')
-      })
+      
+      setLoad(true)
+      try {
+        data.append('email', formData.email);
+        data.append('password', formData.password);
+        axiosInstance.post('/user/log/', data).then((res)=>{
+          console.log(res.data)
+          localStorage.setItem('access', res.data.accessToken);
+          localStorage.setItem('refresh', res.data.refreshToken);
+          navigate('/index')
+        })  
+      } catch (error) {
+        console.log(error.message);
+      }finally{
+        setLoad(false)
+      }
     }
 
   }
@@ -82,8 +90,8 @@ const SignIn = () => {
         />
       </div>
       <div className="mt-8">
-        <button className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
-          Login
+        <button onClick={()=>setLoad(true)} className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
+          { !load? 'Login':'Logging in..' }
         </button>
       </div>
     </div>
