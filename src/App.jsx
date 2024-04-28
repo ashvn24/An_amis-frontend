@@ -5,6 +5,8 @@ import AuthLayout from './User/Auth/AuthLayout';
 import SignIn from './User/Auth/SignIn';
 import CoreLayout from './User/Core/CoreLayout';
 import Index from './User/Core/Index';
+import Book from './User/Core/Book';
+import ContactUs from './User/Core/ContactUs';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
       <Routes>
         <Route element={<CoreLayout/>} >
           <Route path="/index" element={<Index/>} />
+          <Route path="/book" element={<Book/>} />
+          <Route path="/contact" element={<ContactUs/>} />
         </Route>
       </Routes>
       

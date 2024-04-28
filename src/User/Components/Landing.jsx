@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
 
@@ -33,16 +34,18 @@ const Landing = () => {
             Where style meets shears
           </h1>
           <p className="mt-4">Your journey to style starts here.</p>
-          <div className="max-w-sm mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-            <a
+          <div className="max-w-sm mx-auto grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <Link to={'/book'}>           <a
               href="#"
               className="inline-block bg-blue-300 text-white text-md tracking-widest font-heading px-8 py-4"
             >
               Book now
             </a>
+            </Link>
+ 
             <a
               onClick={handleAbout}
-              className="inline-block bg-gray-100 text-gray-700 text-sm tracking-widest font-heading px-8 py-4 cursor-pointer"
+              className="inline-block bg-gray-100 text-gray-700 text-md tracking-widest font-heading px-8 py-4 cursor-pointer"
             >
               Learn more
             </a>

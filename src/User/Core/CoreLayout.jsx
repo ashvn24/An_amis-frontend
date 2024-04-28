@@ -1,12 +1,17 @@
-import React, { useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import BottomBar from "../Components/BottomBar";
 
 const CoreLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
   const accessToken = localStorage.getItem("access");
-
+  const navigate = useNavigate()
 
   const handleServiceClick = () => {
+    if (!window.location.pathname.includes('/index')) {
+      // Redirect to '/index'
+      navigate('/index')
+    }
     // Scroll to the Service section
     const serviceSection = document.getElementById('service-section');
     if (serviceSection) {
@@ -15,11 +20,21 @@ const CoreLayout = () => {
   };
   
   const handleAbout =() => {
+    if (!window.location.pathname.includes('/index')) {
+      // Redirect to '/index'
+      navigate('/index')
+    }
     const aboutSection = document.getElementById('about-section');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
     
+  }
+
+  const handleLogout = () => {
+    localStorage.setItem('access', '');
+    localStorage.setItem('refresh', '');
+    navigate('/')
   }
 
   return (
@@ -29,9 +44,11 @@ const CoreLayout = () => {
       </div>
       <div className="h-24 z-40 relative container mx-auto px-6 flex items-center justify-between text-white">
         <div>
-          <a href="/" className=" font-normal text-xl">
+          <Link to={'/index'}>
+          <a  className=" font-normal text-xl">
             An Amis
           </a>
+          </Link>
         </div>
         <div className="flex items-center justify-center font-normal relative z-10">
           <button className="md:hidden" onClick={() => setShowMenu(true)}>
@@ -57,9 +74,11 @@ const CoreLayout = () => {
             <a  className="mx-6" onClick={handleServiceClick}>
               Service
             </a>
+            <Link to={'/contact'}>
             <a className="mx-6">
               Contact us
             </a>
+            </Link>
           </div>
         </div>
         <div className="flex flex-row gap-5">
@@ -68,13 +87,13 @@ const CoreLayout = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              className="w-6 h-6"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
               />
             </svg>
@@ -84,13 +103,15 @@ const CoreLayout = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6 cursor-pointer"
+                onClick={handleLogout}
+                
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
                 />
               </svg>
@@ -129,14 +150,17 @@ const CoreLayout = () => {
             setShowMenu(false)}}>
               Service
             </a>
-            <a className="mx-6">
-              Articles
+            <Link to={'/contact'}>
+            <a className="mx-6" onClick={()=>setShowMenu(false)}>
+              Contact us
             </a>
+            </Link>
           </div>
         )}
       </div>
 
       <Outlet />
+      <BottomBar/>
     </div>
   );
 };

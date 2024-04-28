@@ -19,7 +19,7 @@ const Index = () => {
 
       <div>
       <Service/>
-      <BottomBar/>
+      
     </div>
     </div>
   );
