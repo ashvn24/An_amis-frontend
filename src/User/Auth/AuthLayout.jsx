@@ -1,10 +1,20 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 import auth from '../../assets/cvr.jpg'
 import bg from '../../assets/bg.jpg'
 
 
 const AuthLayout = () => {
+
+  const accessToken = localStorage.getItem("access");
+  const nav = useNavigate()
+
+  useEffect(() => {
+    if (accessToken !== ''){
+      nav('/index')
+    }
+  }, [])
+  
   return (
     <div>
       <div className="py-16 h-screen  " style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>

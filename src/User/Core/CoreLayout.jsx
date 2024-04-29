@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import BottomBar from "../Components/BottomBar";
+import toast from "react-hot-toast";
 
 const CoreLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
   const accessToken = localStorage.getItem("access");
   const navigate = useNavigate()
+
+  useEffect(() => {
+   if (accessToken === ''){
+   navigate('/')
+   toast.error('login first')
+   }
+  }, [])
+  
 
   const handleServiceClick = () => {
     if (!window.location.pathname.includes('/index')) {

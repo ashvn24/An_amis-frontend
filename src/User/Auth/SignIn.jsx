@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { BASEURL } from '../../Axios/BaseUrl'
 import { axiosInstance } from '../../Axios/AxiosInstance'
+import toast from 'react-hot-toast'
 
 const SignIn = () => {
 
@@ -25,26 +26,39 @@ const SignIn = () => {
     e.preventDefault()
     var data = new FormData()
     const isValid = Object.values(formData).every(value=>value!=='');
-    if (isValid){
-      
-      setLoad(true)
-      try {
-        data.append('email', formData.email);
-        data.append('password', formData.password);
-        axiosInstance.post('/user/log/', data).then((res)=>{
-          console.log(res.data)
-          localStorage.setItem('access', res.data.accessToken);
-          localStorage.setItem('refresh', res.data.refreshToken);
-          navigate('/index')
-        })  
-      } catch (error) {
-        console.log(error.message);
-      }finally{
-        setLoad(false)
-      }
+    if (isValid) {
+      setLoad(true);
+    
+      const data = new FormData();
+      data.append('email', formData.email);
+      data.append('password', formData.password);
+    
+      toast.promise(
+        axiosInstance.post('/user/log/', data)
+          .then((res) => {
+            console.log(res.data);
+            localStorage.setItem('access', res.data.accessToken);
+            localStorage.setItem('refresh', res.data.refreshToken);
+            navigate('/index');
+          })
+          .catch((error) => {
+            console.error('Login failed:', error);
+            throw error; // Rethrow the error to trigger the error handling in toast.promise
+          }),
+        {
+          loading: 'Logging in...', // Message shown while waiting for the response
+          success: 'Login successful!', // Message shown on successful login
+          error: 'Login failed', // Message shown on login failure
+        }
+      ).finally(() => {
+        setLoad(false);
+      });
+    } else {
+      toast.error('fill all fields')
     }
 
   }
+  
 
   return (
     <div>
@@ -64,7 +78,7 @@ const SignIn = () => {
           name="email"
           onChange={handleChange}
           value={formData.email}
-          required
+          
         />
       </div>
       <div className="mt-4">
@@ -75,9 +89,9 @@ const SignIn = () => {
           >
             Password
           </label>
-          <a href="#" className="text-xs text-gray-500">
+          <p href="#" className="text-xs text-gray-500">
             Forget Password?
-          </a>
+          </p>
         </div>
         <input
           id="password"
@@ -86,18 +100,18 @@ const SignIn = () => {
           name='password'
           value={formData.password}
           onChange={handleChange}
-          required
+          
         />
       </div>
       <div className="mt-8">
-        <button onClick={()=>setLoad(true)} className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
+        <button className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">
           { !load? 'Login':'Logging in..' }
         </button>
       </div>
     </div>
     <div className="mt-4 flex items-center justify-between">
                         <span className="border-b w-1/5 md:w-1/4"></span>
-                        <Link to={'/signup'}><a href="#" className="text-xs text-gray-500 uppercase">or sign up</a></Link>
+                        <Link to={'/signup'}><p  className="text-xs text-gray-500 uppercase">or sign up</p></Link>
                         <span className="border-b w-1/5 md:w-1/4"></span>
                     </div>
                     </form>

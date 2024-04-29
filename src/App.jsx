@@ -7,11 +7,14 @@ import CoreLayout from './User/Core/CoreLayout';
 import Index from './User/Core/Index';
 import Book from './User/Core/Book';
 import ContactUs from './User/Core/ContactUs';
+import AdLogin from './Admin/Auth/AdLogin';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
   return (
    <> 
+   <Toaster />
       <Routes>
           <Route element={< AuthLayout/>}>
             <Route path="/signup" element={<Signup />} />
@@ -24,6 +27,10 @@ function App() {
           <Route path="/book" element={<Book/>} />
           <Route path="/contact" element={<ContactUs/>} />
         </Route>
+      </Routes>
+      <Routes>
+
+      <Route path='admin' element={<AdLogin/>} />
       </Routes>
       
    </>
