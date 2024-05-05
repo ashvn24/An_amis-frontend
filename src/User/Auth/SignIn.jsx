@@ -37,9 +37,9 @@ const SignIn = () => {
         axiosInstance.post('/user/log/', data)
           .then((res) => {
             console.log(res.data);
-            localStorage.setItem('access', res.data.accessToken);
-            localStorage.setItem('refresh', res.data.refreshToken);
-            navigate('/index');
+            localStorage.setItem('access', res.data.access);
+            localStorage.setItem('refresh', res.data.refresh);
+            navigate('/');
           })
           .catch((error) => {
             console.error('Login failed:', error);

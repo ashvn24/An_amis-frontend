@@ -8,18 +8,12 @@ const CoreLayout = () => {
   const accessToken = localStorage.getItem("access");
   const navigate = useNavigate()
 
-  useEffect(() => {
-   if (accessToken === ''){
-   navigate('/')
-   toast.error('login first')
-   }
-  }, [])
   
 
   const handleServiceClick = () => {
-    if (!window.location.pathname.includes('/index')) {
+    if (!window.location.pathname.includes('/')) {
       // Redirect to '/index'
-      navigate('/index')
+      navigate('/')
     }
     // Scroll to the Service section
     const serviceSection = document.getElementById('service-section');
@@ -29,9 +23,9 @@ const CoreLayout = () => {
   };
   
   const handleAbout =() => {
-    if (!window.location.pathname.includes('/index')) {
+    if (!window.location.pathname.includes('/')) {
       // Redirect to '/index'
-      navigate('/index')
+      navigate('/')
     }
     const aboutSection = document.getElementById('about-section');
     if (aboutSection) {
@@ -43,7 +37,11 @@ const CoreLayout = () => {
   const handleLogout = () => {
     localStorage.setItem('access', '');
     localStorage.setItem('refresh', '');
-    navigate('/')
+    navigate('/signin')
+  }
+
+  const handleSignin = () => {
+    navigate("/signin")
   }
 
   return (
@@ -53,7 +51,7 @@ const CoreLayout = () => {
       </div>
       <div className="h-24 z-40 relative container mx-auto px-6 flex items-center justify-between text-white">
         <div>
-          <Link to={'/index'}>
+          <Link to={'/'}>
           <a  className=" font-normal text-xl">
             An Amis
           </a>
@@ -91,22 +89,7 @@ const CoreLayout = () => {
           </div>
         </div>
         <div className="flex flex-row gap-5">
-          <a href="#" className="ml-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-              />
-            </svg>
-          </a>
+          
             {accessToken ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +108,23 @@ const CoreLayout = () => {
                 />
               </svg>
             ) : (
-              ""
+              <a  className="ml-4 cursor-pointer" >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+                onClick={handleSignin}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+            </a>
             )}
         </div>
         {showMenu && (

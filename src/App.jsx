@@ -9,6 +9,9 @@ import Book from './User/Core/Book';
 import ContactUs from './User/Core/ContactUs';
 import AdLogin from './Admin/Auth/AdLogin';
 import { Toaster } from 'react-hot-toast';
+import TopBar from './Admin/Components/TopBar';
+import Main from './Admin/Index/main';
+import Dashboard from './Admin/Index/Dashboard';
 
 function App() {
 
@@ -18,20 +21,27 @@ function App() {
       <Routes>
           <Route element={< AuthLayout/>}>
             <Route path="/signup" element={<Signup />} />
-            <Route exact path="/" element={<SignIn />} />
+            <Route  path="/signin" element={<SignIn />} />
           </Route>
       </Routes>
       <Routes>
         <Route element={<CoreLayout/>} >
-          <Route path="/index" element={<Index/>} />
+          <Route exact path="/" element={<Index/>} />
           <Route path="/book" element={<Book/>} />
           <Route path="/contact" element={<ContactUs/>} />
         </Route>
       </Routes>
-      <Routes>
 
-      <Route path='admin' element={<AdLogin/>} />
+
+      <Routes>
+      <Route path='/admin' element={<AdLogin/>} />
       </Routes>
+      <Routes>
+        <Route element={<Main/>} >
+        <Route path='/dashboard' element={<Dashboard/>} />
+        </Route>
+      </Routes>
+
       
    </>
   )

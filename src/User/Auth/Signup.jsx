@@ -57,7 +57,7 @@ const Signup = () => {
       </div>
       <div className="mt-4 flex items-center justify-between">
                         <span className="border-b w-1/5 md:w-1/4"></span>
-                        <Link to={"/"}> <p className="text-xs text-gray-500 uppercase">or sign in</p></Link>
+                        <Link to={"/signin"}> <p className="text-xs text-gray-500 uppercase">or sign in</p></Link>
                         <span className="border-b w-1/5 md:w-1/4"></span>
                     </div>
     </div>

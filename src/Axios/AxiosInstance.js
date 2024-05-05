@@ -13,7 +13,8 @@ export const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
     config => {
         // Retrieve token from local storage
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('access');
+        console.log('token', token);
         
         // If token exists, add it to the request headers
         if (token) {
