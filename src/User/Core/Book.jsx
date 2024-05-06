@@ -3,7 +3,7 @@ import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/react";
 import { Input } from '@nextui-org/react';
 import {Calendar} from "@nextui-org/react";
 import {today, getLocalTimeZone} from "@internationalized/date";
-import {Select, SelectItem} from "@nextui-org/react";
+// import {Select, SelectItem} from "@nextui-org/react";
 import {Button} from "@nextui-org/react";
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -15,6 +15,8 @@ const Book = () => {
   const access = localStorage.getItem('access')
   const nav = useNavigate()
   let [date, setDate] = React.useState(today(getLocalTimeZone()));
+
+  
 
   const [formData, setFormData] = useState({
     name:"",
@@ -59,7 +61,11 @@ const Book = () => {
       data.append('date', appointment)
 
       toast.promise(
-        axiosInstance.post(`/book/create/`, data),
+        axiosInstance.post(`/book/create/`, data).then(res=>{
+          if (res.data){
+            nav('/')
+          }
+     }),
 
         {
           loading: 'please wait...', // Message shown while waiting for the response
@@ -85,17 +91,17 @@ const Book = () => {
                 <div className="flex flex-col gap-5">
                 <Input type="text" label="Name" name='name' onChange={handleChange} value={formData.name}/>
                 <Input type="text" label="Phone" name='phone' onChange={handleChange} value={formData.phone} />
-                <Select 
-                label="Select your Time" 
-                className="max-w-xs" 
-                name='time'
-                value={formData.time}
+                <select 
+                className="max-w-xs p-5 appearance-none bg-gray-100 rounded-xl text-neutral-500" 
                 onChange={handleChange}
+                name='time'
+                // className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                 >
+                 <option value="">Select your Time</option>
                 {timeRanges.map((timeRange, index) => (
-        <SelectItem key={index} value={timeRange}>{timeRange}</SelectItem>
+        <option className='bg-gray-100 rounded-xl' key={index} value={timeRange}>{timeRange}</option>
       ))}
-            </Select>
+            </select>
                 </div>
                 <div>
                 <Calendar 

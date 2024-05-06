@@ -35,9 +35,9 @@ const CoreLayout = () => {
   }
 
   const handleLogout = () => {
-    localStorage.setItem('access', '');
-    localStorage.setItem('refresh', '');
-    navigate('/signin')
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+    navigate('/')
   }
 
   const handleSignin = () => {

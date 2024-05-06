@@ -10,7 +10,7 @@ const AuthLayout = () => {
   const nav = useNavigate()
 
   useEffect(() => {
-    if (accessToken !== null){
+    if (accessToken){
       nav('/')
     }
   }, [])

@@ -8,26 +8,25 @@ const BottomBar = () => {
           <div>
             <div className="text-gray-900 text-4xl font-display">An Amis</div>
           </div>
-          <div>
+          {/* <div>
             <div className="font-display text-gray-900 text-sm tracking-widest mb-6">More Info</div>
             <a href="#" className="block mb-4">Shop</a>
             <a href="#" className="block mb-4">About</a>
             <a href="#" className="block mb-4">Info</a>
             <a href="#" className="block mb-4">FAQ</a>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <div className="font-display text-gray-900 text-sm tracking-widest mb-6">Helpful Links</div>
             <a href="#" className="block mb-4">Shop</a>
             <a href="#" className="block mb-4">About</a>
             <a href="#" className="block mb-4">Info</a>
             <a href="#" className="block mb-4">FAQ</a>
-          </div>
+          </div> */}
           <div>
-            <div className="font-display text-gray-900 text-sm tracking-widest mb-6">Find out more</div>
-            <a href="#" className="block mb-4">Shop</a>
-            <a href="#" className="block mb-4">About</a>
-            <a href="#" className="block mb-4">Info</a>
-            <a href="#" className="block mb-4">FAQ</a>
+            <div className="font-display text-gray-900 text-sm tracking-widest mb-6">Contct us</div>
+            <a href="#" className="block mb-4">Address: Old Rd, opp. Baby Hyper Market, junction, Kuthuparamba, Kerara 670643</a>
+            <a href="#" className="block mb-4">Phone: +91 9846560589</a>
+            <a href="#" className="block mb-4">email: example@gmail.com</a>
           </div>
         </div>
       </div>

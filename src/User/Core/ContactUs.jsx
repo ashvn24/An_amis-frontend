@@ -1,11 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import {Card, CardBody, CardHeader} from "@nextui-org/react";
 import { Input, Textarea } from '@nextui-org/react';
 import {Button} from "@nextui-org/react";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import emailjs from "@emailjs/browser";
 
 
 
 const ContactUs = () => {
+  const nav = useNavigate()
+  const [FormData, setFormData] = useState({
+    name: "",
+    email: "",
+    desc: ""
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...FormData,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    const valid = Object.values(FormData).every(value=> value!=='')
+    if (valid){
+        try {
+        toast.promise(
+          emailjs.send(
+            'service_5iqlj0q',
+            'template_8a33znl',
+            {
+              from_name:FormData.name,
+              to_name:"ASh",
+              from_email:FormData.email,
+              to_email:"ashwinvk77@gmail.com",
+              message:FormData.desc
+            },
+            'TOP73uL7LxXc6jYYe'
+          ),
+          {
+            loading: 'sending...', // Message shown while waiting for the response
+            success: 'successful!', // Message shown on successful login
+            error: 'failed', // Message shown on login failure
+          }
+        )
+      } catch (error) {
+      
+      }finally{
+          setFormData({
+            name:"",
+            email:"",
+            desc:""
+          })
+          nav('/')
+        }
+      }else{
+        toast.error('fill all fields')
+      }
+    
+
+  }
+
   return (
     <div>
       <div className="-mt-32 relative w-full h-screen bg-blue-100 flex items-center justify-center">
@@ -14,23 +73,29 @@ const ContactUs = () => {
           <CardHeader className="flex justify-center">
         <p className='text-center'>Contact us</p>
         </CardHeader>
+        <form onSubmit={(e)=>handleSubmit(e)}>
+
             <CardBody className="px-10">
               <div className="flex flex-row max-sm:flex-col p-3 gap-10">
                 <div className="flex flex-col gap-5">
-                <Input type="email" label="Name" />
-                <Input type="email" label="Email" />
+                <Input type="text" label="Name" name="name" onChange={handleChange} value={FormData.name}/>
+                <Input type="email" label="Email" name="email" value={FormData.email} onChange={handleChange} />
                 <Textarea
                 label="Description"
-                
+                name="desc"
+                value={FormData.desc}
+                onChange={handleChange}
                 className="max-w-xs"
                 />
                 <div className="flex flex-row text-center justify-center gap-2">
-                <Button color="primary">
-                    Book
+                <Button type="submit" color="primary">
+                    Send
                 </Button>  
+                <Link to={'/'} >
                 <Button color="danger">
                     Cancel
                 </Button> 
+                </Link>
                 </div>
                 </div>
                 <div>
@@ -41,11 +106,12 @@ const ContactUs = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+                ></iframe>
                 </div>
               </div>
               
             </CardBody>
+                </form>
           </Card>
         </div>
         <img
