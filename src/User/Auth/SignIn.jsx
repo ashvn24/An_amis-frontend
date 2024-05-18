@@ -1,7 +1,5 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { BASEURL } from '../../Axios/BaseUrl'
 import { axiosInstance } from '../../Axios/AxiosInstance'
 import toast from 'react-hot-toast'
 
