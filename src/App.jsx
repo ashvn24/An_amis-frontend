@@ -23,20 +23,15 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route  path="/signin" element={<SignIn />} />
           </Route>
-      </Routes>
-      <Routes>
+
         <Route element={<CoreLayout/>} >
           <Route exact path="/" element={<Index/>} />
           <Route path="/book" element={<Book/>} />
           <Route path="/contact" element={<ContactUs/>} />
         </Route>
-      </Routes>
 
+        <Route path='/admin' element={<AdLogin/>} />
 
-      <Routes>
-      <Route path='/admin' element={<AdLogin/>} />
-      </Routes>
-      <Routes>
         <Route element={<Main/>} >
         <Route path='/dashboard' element={<Dashboard/>} />
         </Route>
