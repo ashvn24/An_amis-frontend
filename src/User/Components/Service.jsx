@@ -54,12 +54,7 @@ const Service = () => {
             <h3 className="font-display text-2xl">Hairstyling</h3>
             <p className="text-sm mt-2">
             Elevate your look with stunning hairstyling expertise.
-            </p><div className='flex justify-center items-center h-screen'>
-
-            <Link to={'/service'}><button className='p-4 bg-white text-black rounded-lg font-semibold mt-10 '>
-              view more
-            </button></Link>
-            </div>
+            </p>
           </div>
           <img
             src={hair}
@@ -93,6 +88,12 @@ const Service = () => {
             <p className="text-sm mt-2">
             Smooth, sleek, sensational: unlock the secret to flawless hair with our keratin treatments.
             </p>
+            <div className='flex justify-center items-center'>
+
+            <Link to={'/service'}><button className='p-4 bg-white text-black rounded-lg font-semibold mt-10 '>
+              view more
+            </button></Link>
+            </div>
             
           </div>
           <img
