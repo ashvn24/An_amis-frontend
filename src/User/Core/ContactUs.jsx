@@ -35,9 +35,9 @@ const ContactUs = () => {
             'template_8a33znl',
             {
               from_name:FormData.name,
-              to_name:"ASh",
+              to_name:"AnAmis",
               from_email:FormData.email,
-              to_email:"ashwinvk77@gmail.com",
+              to_email:"anamissalon@gmail.com",
               message:FormData.desc
             },
             'TOP73uL7LxXc6jYYe'
