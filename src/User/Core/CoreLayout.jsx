@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import BottomBar from "../Components/BottomBar";
-import toast from "react-hot-toast";
 
 const CoreLayout = () => {
   const [showMenu, setShowMenu] = useState(false);
   const accessToken = localStorage.getItem("access");
   const navigate = useNavigate()
 
-  
+  useEffect(() => {
+    // Set a timer to clear localStorage after a specific duration
+    const timer = setTimeout(() => {
+      localStorage.clear();
+      console.log('localStorage cleared');
+    }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+
+    // Clean up the timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleServiceClick = () => {
-    if (!window.location.pathname.includes('/')) {
+    console.log();
+    if (window.location.pathname.includes('/')) {
       // Redirect to '/index'
       navigate('/')
     }
@@ -23,7 +32,7 @@ const CoreLayout = () => {
   };
   
   const handleAbout =() => {
-    if (!window.location.pathname.includes('/')) {
+    if (window.location.pathname.includes('/')) {
       // Redirect to '/index'
       navigate('/')
     }

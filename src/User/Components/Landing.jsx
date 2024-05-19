@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import main1 from '../../assets/main1.avif'
+import main2 from '../../assets/main2.avif'
 
 const Landing = () => {
 
     
     const [current, setCurrent] = useState(0);
   const images = [
-    "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    main1,
+    main2,
   ];
 
   useEffect(() => {

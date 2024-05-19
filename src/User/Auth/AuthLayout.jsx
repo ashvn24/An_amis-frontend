@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import auth from '../../assets/cvr.jpg'
-import bg from '../../assets/bg.jpg'
+import bg from '../../assets/bg.webp'
 
 
 const AuthLayout = () => {
