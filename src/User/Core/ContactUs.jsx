@@ -31,8 +31,8 @@ const ContactUs = () => {
         try {
         toast.promise(
           emailjs.send(
-            'service_5iqlj0q',
-            'template_8a33znl',
+            'service_cz3vke3',
+            'template_5wuqgyq',
             {
               from_name:FormData.name,
               to_name:"AnAmis",
@@ -40,7 +40,7 @@ const ContactUs = () => {
               to_email:"anamissalon@gmail.com",
               message:FormData.desc
             },
-            'TOP73uL7LxXc6jYYe'
+            '2bodi6NKUlYvmLF8z'
           ),
           {
             loading: 'sending...', // Message shown while waiting for the response

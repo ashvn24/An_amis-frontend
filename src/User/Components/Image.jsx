@@ -106,7 +106,9 @@ export default function ImageCard({ data1 }) {
             <p className="text-tiny text-white/60">{data1.op1.details.d2}</p>
           </div>
         </div>
-        <Link to={'/contact'}> <Button radius="full" size="sm">Contact us</Button></Link>
+        <Link to="/contact">
+    <Button radius="full" size="sm">Contact us</Button>
+</Link>
       </CardFooter>
     </Card>
   </div>
