@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast';
 import TopBar from './Admin/Components/TopBar';
 import Main from './Admin/Index/main';
 import Dashboard from './Admin/Index/Dashboard';
+import Group from './User/Core/Group';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/" element={<Index/>} />
           <Route path="/book" element={<Book/>} />
           <Route path="/contact" element={<ContactUs/>} />
+          <Route path='/service' element={<Group/>} />
         </Route>
 
         <Route path='/admin' element={<AdLogin/>} />

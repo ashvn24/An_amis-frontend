@@ -1,4 +1,10 @@
 import React from 'react'
+import spa from '../../assets/service/spa.avif'
+import bridal from '../../assets/service/bridal.avif'
+import facial from '../../assets/service/facial.avif'
+import hair from '../../assets/service/hair.avif'
+import keratin from '../../assets/service/keratin.avif'
+import { Link } from 'react-router-dom'
 
 const Service = () => {
   return (
@@ -6,7 +12,7 @@ const Service = () => {
       
 
       <div className="p-4 grid grid-cols-1 md:grid-cols-5 grid-rows-2 gap-4 md:h-screen">
-        <a
+        <p
           href="#"
           className="relative block bg-black text-white md:col-span-2"
         >
@@ -18,12 +24,12 @@ const Service = () => {
             
           </div>
           <img
-            src="https://images.unsplash.com/photo-1527632911563-ee5b6d53465b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+            src={bridal}
             className="absolute inset-0 w-full h-full object-cover opacity-75"
             alt="Best Sellers"
           />
-        </a>
-        <a
+        </p>
+        <p
           href="#"
           className="relative block bg-black text-white md:col-span-3 lg:col-span-1"
         >
@@ -35,12 +41,12 @@ const Service = () => {
             
           </div>
           <img
-            src="https://images.unsplash.com/photo-1531646317777-0619c7c5d1d3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+            src={facial}
             className="absolute inset-0 w-full h-full object-cover opacity-75"
             alt="Limited"
           />
-        </a>
-        <a
+        </p>
+        <p
           href="#"
           className="relative block bg-black text-white md:col-span-3 lg:col-span-2 lg:row-span-2"
         >
@@ -48,16 +54,20 @@ const Service = () => {
             <h3 className="font-display text-2xl">Hairstyling</h3>
             <p className="text-sm mt-2">
             Elevate your look with stunning hairstyling expertise.
-            </p>
-            
+            </p><div className='flex justify-center items-center h-screen'>
+
+            <Link to={'/service'}><button className='p-4 bg-white text-black rounded-lg font-semibold mt-10 '>
+              view more
+            </button></Link>
+            </div>
           </div>
           <img
-            src="https://images.unsplash.com/photo-1527633412983-d80af308e660?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
+            src={hair}
             className="absolute inset-0 w-full h-full object-cover opacity-75"
             alt="New In"
           />
-        </a>
-        <a
+        </p>
+        <p
           href="#"
           className="relative block bg-black text-white md:col-span-2 lg:col-span-1"
         >
@@ -69,12 +79,12 @@ const Service = () => {
             
           </div>
           <img
-            src="https://images.unsplash.com/photo-1533017568856-f6085fef5f1f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+            src={spa}
             className="absolute inset-0 w-full h-full object-cover opacity-75"
             alt="Sale"
           />
-        </a>
-        <a
+        </p>
+        <p
           href="#"
           className="relative block bg-black text-white md:col-span-5 lg:col-span-2"
         >
@@ -86,11 +96,11 @@ const Service = () => {
             
           </div>
           <img
-            src="https://images.unsplash.com/photo-1603001790877-2733c25430d7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
+            src={keratin}
             className="absolute inset-0 w-full h-full object-cover opacity-75"
             alt="Half Price"
           />
-        </a>
+        </p>
       </div>
     </div>
   )

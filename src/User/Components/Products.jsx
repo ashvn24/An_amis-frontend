@@ -1,4 +1,7 @@
 import React from 'react'
+import hair3 from '../../assets/product/hair3.jpg'
+import hair2 from '../../assets/product/hair2.jpg'
+import hair1 from '../../assets/product/hair1.jpg'
 
 const Products = () => {
   return (
@@ -9,8 +12,7 @@ const Products = () => {
             Why An Amis?
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold font-display mt-3">
-            Natural and organic is the future of skincare and life as we know
-            it.
+          Redefining beauty standards, one client at a time. 
           </h2>
         </div>
         <div className="w-full lg:w-auto text-center">
@@ -23,9 +25,7 @@ const Products = () => {
         </div>
         <div className="w-full lg:flex-1">
           <p>
-            Let's face it. Many cosmetics are bad for your skin. We use only
-            natural ingredients and still provide consistently great tanning
-            results.
+          Welcome to AnAmis, where we believe in celebrating your unique beauty and helping you feel your most confident self. Our salon is a sanctuary of relaxation and rejuvenation, where our team of skilled professionals is dedicated to providing you with an exceptional experience.
           </p>
           
         </div>
@@ -36,35 +36,34 @@ const Products = () => {
           <div className="text-gray-700 text-center md:col-span-2 flex items-center justify-center">
             <div className="relative z-10 p-12">
               <div className="uppercase text-sm text-gray-700 tracking-widest">
-                Limited Run
+              Rejuvenating 
               </div>
               <h3 className="font-display font-semibold text-3xl mt-2">
-                Moisturise
+              Hair Treatments
               </h3>
               <p className="mt-3 mx-auto max-w-md">
-                Whether in the sun or on the couch, hydration is key to
-                maintaining happy, healthy skin.
+              Restore your hair's radiant shine and vitality with our nourishing hair treatments
               </p>
               
             </div>
           </div>
           <div className="h-64 md:h-auto md:col-span-2 md:row-span-2 relative">
             <img
-              src="https://images.unsplash.com/photo-1597931752949-98c74b5b159f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
+              src={hair3}
               className="absolute inset-0 w-full h-full object-cover"
               alt="Moisturise"
             />
           </div>
           <div className="h-64 md:h-auto col-span-1 row-span-1 relative">
             <img
-              src="https://images.unsplash.com/photo-1607602175460-c5dff74d7909?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1482&q=80"
+              src={hair2}
               className="absolute inset-0 w-full h-full object-cover"
               alt="Product"
             />
           </div>
           <div className="h-64 md:h-auto col-span-1 row-span-1 relative">
             <img
-              src="https://images.unsplash.com/photo-1598282780498-8eda08ec1941?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80"
+              src={hair1}
               className="absolute inset-0 w-full h-full object-cover"
               alt="Product"
             />
