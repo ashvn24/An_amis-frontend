@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(
     // If token exists, add it to the request headers
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      const user = jwtDecode(accessToken);
+      const user = jwtDecode(token);
       const isExp = dayjs.unix(user.exp).diff(dayjs()) < 1;
       if (isExp) {
         const res = axios.post(`${BASEURL}/token/refresh`, {
