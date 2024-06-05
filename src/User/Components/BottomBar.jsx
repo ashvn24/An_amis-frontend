@@ -11,7 +11,7 @@ const BottomBar = () => {
           
           <div>
             <div className="font-display text-gray-900 text-sm tracking-widest mb-6">Contct us</div>
-            <a href="#" className="block mb-4">Address: Old Rd, opp. Baby Hyper Market, junction, Kuthuparamba, Kerara 670643</a>
+            <a href="#" className="block mb-4">Address: Old Road, opp. Baby hyper Market, Iritty Road Kuthuparamba, Kannur, Kerala 670643</a>
             <a href="#" className="block mb-4">Phone: +91 9846560589</a>
             <a href="#" className="block mb-4">email: anamissalon@gmail.com</a>
           </div>
