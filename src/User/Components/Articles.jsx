@@ -2,7 +2,7 @@ import React from 'react'
 import yel from '../../assets/product/yel.jpg'
 import prod from '../../assets/product/prods.jpg'
 import port from '../../assets/product/port.jpg'
-import bot from '.../.../assets/product/prod.jpeg'
+import bot from '../../assets/product/prod.jpeg'
 
 const Articles = () => {
   return (
