@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import main1 from '../../assets/main1.avif'
 import main2 from '../../assets/main2.avif'
-import slider from ../../assets/slider.jpeg'
+import slider from '../../assets/slider.jpeg'
 
 const Landing = () => {
 
